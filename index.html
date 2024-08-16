@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaFetch - Unduh Media dengan Mudah</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand animate__animated animate__fadeIn" href="#" onclick="location.reload()">𝐌𝐞𝐝𝐢𝐚𝐅𝐞𝐭𝐜𝐡™</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> 
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link animate__animated animate__fadeIn" href="#home" data-lang="home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link animate__animated animate__fadeIn" href="#about" data-lang="about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link animate__animated animate__fadeIn" href="#contact" data-lang="contact">Kontak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link animate__animated animate__fadeIn" href="mobileapi.html" data-lang="api">API</a>
+                    </li>
+                    <li class="nav-item language-selector">
+                        <select id="languageSelect" class="form-select form-select-sm">
+                            <option value="id">Indonesia</option>
+                            <option value="en">English</option>
+                            <option value="jv">Jawa</option>
+                        </select>
+                    </li>
+                    <li class="nav-item">
+                        <button id="darkModeToggle" class="btn btn-secondary-custom animate__animated animate__fadeIn"><i class="fas fa-moon"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown" data-lang="hero-title">Unduh Video, Musik & Gambar dengan Mudah</h1>
+            <div class="icon-container animate__animated animate__fadeInUp">
+                <i class="fab fa-facebook fa-2x mx-3 facebook-icon"></i>
+                <i class="fab fa-instagram fa-2x mx-3 instagram-icon"></i>
+                <i class="fab fa-x fa-2x mx-3 x-icon"></i>
+                <i class="fab fa-spotify fa-2x mx-3 spotify-icon"></i>
+                <i class="fab fa-tiktok fa-2x mx-3 tiktok-icon"></i>
+            </div>
+            <p class="mt-3 animate__animated animate__fadeInUp" data-lang="hero-subtitle">Masukkan URL di bawah ini untuk memulai!</p>
+        </div>
+    </section>
+
+    <div class="container mt-4">
+        <div class="input-group mb-3 animate__animated animate__fadeInLeft">
+            <input type="text" id="urlInput" class="form-control" data-lang-placeholder="url-placeholder" placeholder="Masukkan URL di sini...">
+            <button id="pasteBtn" class="btn btn-secondary-custom"><i class="fas fa-paste"></i></button>
+        </div>
+        <button id="downloadBtn" onclick="fetchData()" class="btn btn-primary-custom w-100 animate__animated animate__fadeInRight" data-lang="download-btn">Unduh</button>
+        
+        <div id="spinner" class="text-center mt-4" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden" data-lang="loading">Loading...</span>
+            </div>
+        </div>
+        
+        <div id="content" class="mt-4"></div>
+
+        <section id="about" class="animate-on-scroll">
+            <h2 class="section-title" data-lang="about-title">Tentang Kami</h2>
+            <div class="card-custom p-3">
+                <p data-lang="about-text-1">MediaFetch adalah platform unduhan media yang mudah digunakan dan gratis. Kami menyediakan layanan untuk mengunduh video, musik, dan gambar dari berbagai platform media sosial populer.</p>
+                <p data-lang="about-text-2">Misi kami adalah membuat proses unduhan konten digital menjadi sesederhana dan seefisien mungkin bagi pengguna kami.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="animate-on-scroll">
+            <h2 class="section-title" data-lang="contact-title">Hubungi Kami</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <span data-lang="email">Email</span>: info@mediafetch.com</p>
+                <p><i class="fas fa-phone"></i> <span data-lang="phone">Telepon</span>: +62 831 7744 3185</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-lang="address">Alamat</span>: <span data-lang="address-text">Purworejo, Jawa Tengah, Indonesia</span></p>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="text-center py-4 mt-4">
+        <p data-lang="footer-text">2024 MediaFetch. Hak cipta dilindungi undang-undang.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/script.js"></script>
+</body>
+</html>

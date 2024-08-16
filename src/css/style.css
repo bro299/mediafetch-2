@@ -1,0 +1,260 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --text-color: #333;
+    --bg-color: #ffffff;
+    --card-bg: #f9f9f9;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-custom {
+    background-color: var(--primary-color);
+    transition: background-color 0.3s;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white;
+}
+
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    outline: none;
+    position: relative;
+}
+
+.toggler-icon {
+    font-size: 24px;
+    color: #fff;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.icon-close {
+    opacity: 0;
+}
+
+.navbar-toggler.collapsing .icon-open {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.navbar-toggler.collapsing .icon-close {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.navbar-toggler:focus .icon-open {
+    opacity: 0;
+}
+
+.navbar-toggler:focus .icon-close {
+    opacity: 1;
+}
+
+
+
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/*.icon-container i {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    color: rgba(231, 0, 0, 0.8);
+    transition: transform 0.3s, color 0.3s;
+}*/
+.icon-container i:hover {
+    transform: scale(1.2);
+    color: #ab3232;
+}
+.facebook-icon {
+    color: #0077ff; /* Biru Facebook */
+}
+
+.instagram-icon {
+    color: #C13584; /* Ungu Instagram */
+}
+
+.x-icon {
+    color: #313131; /* Biru Twitter */
+}
+
+.spotify-icon {
+    color: #1DB954; /* Hijau Spotify */
+}
+
+.tiktok-icon {
+    color: #000000; /* Hitam TikTok */
+}
+
+
+.input-group {
+    margin-top: 2rem;
+}
+
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-secondary-custom {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-secondary-custom:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.card-custom {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    background-color: var(--card-bg);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.responsive-video {
+    width: 100%;
+    max-height: 300px;
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .icon-container i {
+        font-size: 1.2rem;
+    }
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --primary-color: #2e7d32;
+    --secondary-color: #1b5e20;
+}
+
+/* Dark mode styling */
+
+.dark-mode .icon-container i:hover {
+    transform: scale(1.2);
+    color: #d4d4d4;
+}
+.dark-mode .facebook-icon {
+    color: #0f1aaf; /* Biru Facebook untuk dark mode */
+}
+
+.dark-mode .instagram-icon {
+    color: #E4405F; /* Merah Instagram untuk dark mode */
+}
+
+.dark-mode .x-icon {
+    color: #000000; /* Biru Twitter untuk dark mode */
+}
+
+.dark-mode .spotify-icon {
+    color: #1ED760; /* Hijau Spotify untuk dark mode */
+}
+
+.dark-mode .tiktok-icon {
+    color: #FFFFFF; /* Putih TikTok untuk dark mode */
+}
+
+.dark-mode .hero-section {
+    background: linear-gradient(135deg, #101010 0%, #20bd47 100%);
+}
+
+.section-title {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: var(--secondary-color);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.language-selector {
+    margin-left: 1rem;
+}
+
+.language-selector select {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.language-selector select option {
+    background-color: var(--primary-color);
+    color: white;
+}

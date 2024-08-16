@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaFetch API - Dokumentasi</title>
+    <style>
+        /* Gaya yang sudah ada sebelumnya... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Menampilkan scrollbar */
+            scroll-behavior: smooth; /* Efek scroll halus */
+        }
+        html {
+            scroll-behavior: smooth; /* Efek scroll halus */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .section-title {
+            color: #00c853;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+        .section-title:hover {
+            color: #76c7c0; /* Warna keren saat cursor mendekat */
+        }
+        h2 {
+            color: #00c853;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        h2:hover {
+            color: #76c7c0; /* Warna keren saat cursor mendekat */
+        }
+        p, ul {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .api-list-container {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .api-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .api-button:hover {
+            transform: scale(1.05);
+        }
+        .btn-primary {
+            background-color: #00796b;
+        }
+        .btn-primary:hover {
+            background-color: #004d40;
+        }
+        .btn-success {
+            background-color: #004d40;
+        }
+        .btn-success:hover {
+            background-color: #00251a;
+        }
+        .btn-danger {
+            background-color: #d32f2f;
+        }
+        .btn-danger:hover {
+            background-color: #b71c1c;
+        }
+        .d-flex {
+            display: flex;
+            flex-direction: column;
+        }
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .language-selector {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+        }
+        .language-selector label {
+            margin-right: 0.5rem;
+            color: #e0e0e0;
+        }
+        .language-selector select {
+            background-color: #1a1a1a;
+            border: none;
+            color: rgb(255, 255, 255);
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .language-selector select:hover {
+            background-color: #1a1a1a;
+            opacity: 10%;
+        }
+
+        /* Tambahkan gaya animasi fade-in */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loader Styles */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .loader .spinner {
+            border: 6px solid #333;
+            border-top: 6px solid #00c853;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container mt-4 fade-in" id="content">
+        <div class="language-selector">
+            <label for="language">:</label>
+            <select id="language" onchange="changeLanguage()">
+                <option value="id">ID</option>
+                <option value="en">EN</option>
+                <option value="jv">JV</option>
+            </select>
+        </div>
+
+        <h1 class="section-title" id="title">Dokumentasi API MediaFetch</h1>
+        
+        <section class="mb-4">
+            <h2 id="intro-title">Pengenalan</h2>
+            <p id="intro-text">MediaFetch menggunakan beberapa API pihak ketiga untuk menyediakan layanan unduhan media. Berikut adalah daftar API yang kami gunakan:</p>
+        </section>
+
+        <div class="container api-list-container">
+            <h2 class="text-center mb-4" id="api-list-title">Daftar API yang Digunakan</h2>
+            <div class="d-flex flex-column">
+                <a href="https://api.tiklydown.eu.org/" class="btn btn-primary api-button" target="_blank" id="api-tiklydown">Tiklydown</a>
+                <a href="https://itzpire.site/" class="btn btn-success api-button" target="_blank" id="api-itzpire">Itzpire</a>
+                <a href="https://api.nyxs.pw/" class="btn btn-danger api-button" target="_blank" id="api-nyxs">Nyxs</a>
+            </div>
+        </div>
+
+        <section class="mb-4">
+            <h2 id="usage-title">Penggunaan</h2>
+            <p id="usage-text">MediaFetch mengintegrasikan API-API ini untuk menyediakan layanan unduhan yang komprehensif. Pengguna tidak perlu berinteraksi langsung dengan API-API ini, karena semua fungsionalitas telah diintegrasikan ke dalam platform MediaFetch.</p>
+        </section>
+
+        <section class="mb-4">
+            <h2 id="features-title">Fitur</h2>
+            <ul id="features-list">
+                <li><strong>Tiklydown:</strong> Digunakan untuk mengunduh video dari TikTok</li>
+                <li><strong>Itzpire:</strong> Menyediakan layanan unduhan untuk berbagai platform media sosial</li>
+                <li><strong>Nyxs:</strong> API tambahan untuk mendukung unduhan dari platform yang berbeda</li>
+            </ul>
+        </section>
+
+        <section class="mb-4">
+            <h2 id="notes-title">Catatan Penting</h2>
+            <p id="notes-text">Penggunaan API pihak ketiga ini tunduk pada syarat dan ketentuan masing-masing penyedia API. MediaFetch tidak bertanggung jawab atas perubahan atau gangguan layanan yang mungkin terjadi pada API-API tersebut.</p>
+        </section>
+    </div>
+
+    <script>
+        const translations = {
+            id: {
+                title: "Dokumentasi API MediaFetch",
+                introTitle: "Pengenalan",
+                introText: "MediaFetch menggunakan beberapa API pihak ketiga untuk menyediakan layanan unduhan media. Berikut adalah daftar API yang kami gunakan:",
+                apiListTitle: "Daftar API yang Digunakan",
+                apiTiklydown: "Tiklydown",
+                apiItzpire: "Itzpire",
+                apiNyxs: "Nyxs",
+                usageTitle: "Penggunaan",
+                usageText: "MediaFetch mengintegrasikan API-API ini untuk menyediakan layanan unduhan yang komprehensif. Pengguna tidak perlu berinteraksi langsung dengan API-API ini, karena semua fungsionalitas telah diintegrasikan ke dalam platform MediaFetch.",
+                featuresTitle: "Fitur",
+                featuresList: [
+                    "Tiklydown: Digunakan untuk mengunduh video dari TikTok",
+                    "Itzpire: Menyediakan layanan unduhan untuk berbagai platform media sosial",
+                    "Nyxs: API tambahan untuk mendukung unduhan dari platform yang berbeda"
+                ],
+                notesTitle: "Catatan Penting",
+                notesText: "Penggunaan API pihak ketiga ini tunduk pada syarat dan ketentuan masing-masing penyedia API. MediaFetch tidak bertanggung jawab atas perubahan atau gangguan layanan yang mungkin terjadi pada API-API tersebut."
+            },
+            en: {
+                title: "MediaFetch API Documentation",
+                introTitle: "Introduction",
+                introText: "MediaFetch uses several third-party APIs to provide media download services. Here is a list of the APIs we use:",
+                apiListTitle: "API List",
+                apiTiklydown: "Tiklydown",
+                apiItzpire: "Itzpire",
+                apiNyxs: "Nyxs",
+                usageTitle: "Usage",
+                usageText: "MediaFetch integrates these APIs to provide a comprehensive download service. Users do not need to interact directly with these APIs, as all functionalities are integrated into the MediaFetch platform.",
+                featuresTitle: "Features",
+                featuresList: [
+                    "Tiklydown: Used to download videos from TikTok",
+                    "Itzpire: Provides download services for various social media platforms",
+                    "Nyxs: Additional API to support downloads from different platforms"
+                ],
+                notesTitle: "Important Notes",
+                notesText: "The use of these third-party APIs is subject to the terms and conditions of each API provider. MediaFetch is not responsible for any changes or disruptions to the services provided by these APIs."
+            },
+            jv: {
+                title: "Dokumentasi API MediaFetch",
+                introTitle: "Pengenalan",
+                introText: "MediaFetch nggunakake sawetara API pihak katelu kanggo nyedhiyani layanan unduhan media. Ing ngendi ana dhaftar API sing digunakake:",
+                apiListTitle: "Dhaftar API sing Digunakake",
+                apiTiklydown: "Tiklydown",
+                apiItzpire: "Itzpire",
+                apiNyxs: "Nyxs",
+                usageTitle: "Penggunaan",
+                usageText: "MediaFetch ngintegrasi API iki kanggo nyedhiyani layanan unduhan sing komprehensif. Panganggo ora perlu sesambungan langsung karo API iki, amarga kabeh fungsionalitas wis diintegrasi menyang platform MediaFetch.",
+                featuresTitle: "Fitur",
+                featuresList: [
+                    "Tiklydown: Digunakake kanggo ngundhuh video saka TikTok",
+                    "Itzpire: Nyedhiyani layanan unduhan kanggo macem-macem platform media sosial",
+                    "Nyxs: API tambahan kanggo ndhukung unduhan saka platform sing beda"
+                ],
+                notesTitle: "Catetan Penting",
+                notesText: "Panggunaan API pihak katelu iki tundhuk ing syarat lan kahanan penyedia API. MediaFetch ora tanggung jawab kanggo owah-owahan utawa gangguan layanan sing bisa kedadeyan ing API iki."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('language').value;
+            const translation = translations[lang];
+
+            document.getElementById('title').innerText = translation.title;
+            document.getElementById('intro-title').innerText = translation.introTitle;
+            document.getElementById('intro-text').innerText = translation.introText;
+            document.getElementById('api-list-title').innerText = translation.apiListTitle;
+            document.getElementById('api-tiklydown').innerText = translation.apiTiklydown;
+            document.getElementById('api-itzpire').innerText = translation.apiItzpire;
+            document.getElementById('api-nyxs').innerText = translation.apiNyxs;
+            document.getElementById('usage-title').innerText = translation.usageTitle;
+            document.getElementById('usage-text').innerText = translation.usageText;
+            document.getElementById('features-title').innerText = translation.featuresTitle;
+            document.getElementById('features-list').innerHTML = translation.featuresList.map(feature => `<li>${feature}</li>`).join('');
+            document.getElementById('notes-title').innerText = translation.notesTitle;
+            document.getElementById('notes-text').innerText = translation.notesText;
+        }
+
+        // Script to hide loader and show content
+        window.addEventListener('load', function() {
+            document.getElementById('loader').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
